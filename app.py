@@ -40,7 +40,7 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     [
-                        html.Label("Average schooling years grater than"),
+                        html.Label("Average schooling years greater than"),
                         dcc.Dropdown(
                             id="schooling-dropdown",
                             options=[
@@ -59,17 +59,16 @@ app.layout = html.Div(
         ),
         html.Div(dcc.Graph(id="life-exp-vs-gdp"), className="chart"),
         dcc.Slider(
-            # "year-slider",
+            id="year-slider",
             min=df.Year.min(),
             max=df.Year.max(),
-            # error found in this code
-            # The step attribute is set to None which is not allowed. step attribute should be an integer or a float value.
-            # step=None,
-            step=1,
+            step=None,
             marks={year: str(year) for year in range(
                 df.Year.min(), df.Year.max() + 1)},
             value=df.Year.min(),
         ),
+        # error: TypeError: Slider.__init__() got multiple values for argument 'min'
+        # this was cause by not using id property to reference this slider
     ],
     className="container",
 )
