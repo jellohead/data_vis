@@ -59,10 +59,13 @@ app.layout = html.Div(
         ),
         html.Div(dcc.Graph(id="life-exp-vs-gdp"), className="chart"),
         dcc.Slider(
-            "year-slider",
+            # "year-slider",
             min=df.Year.min(),
             max=df.Year.max(),
-            step=None,
+            # error found in this code
+            # The step attribute is set to None which is not allowed. step attribute should be an integer or a float value.
+            # step=None,
+            step=1,
             marks={year: str(year) for year in range(
                 df.Year.min(), df.Year.max() + 1)},
             value=df.Year.min(),
