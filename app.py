@@ -2,7 +2,6 @@
 # https://towardsdatascience.com/plotly-dashboards-in-python-28a3bb83702c
 import dash
 from dash import Dash, dcc, html
-#from dash import html
 from dash.html import Label
 from pandas.io.formats import style
 import plotly.express as px
@@ -97,6 +96,7 @@ def update_figure(selected_year, country_status, schooling):
         size="Population",
         color="continent",
         hover_name="Country",
+        #hover_name="Life expectancy",
         log_x=True,
         size_max=60,
     )
@@ -112,4 +112,4 @@ def update_figure(selected_year, country_status, schooling):
 
 if __name__ == "__main__":
     # added use_reloader=False to get server to load page
-    app.run_server(debug=True, use_reloader=False)
+    app.run_server(debug=True, use_reloader=True)
